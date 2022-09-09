@@ -23,6 +23,8 @@ leds3 = [led9,led3,led2,led10,led1,led8,led5,led4,led6,led7]
 leds4= [led2,led4,led6,led8,led10]
 leds5 = [led1,led3,led5,led7,led9]
 leds6=[led2,led6,led10,led9,led1,led7,led5]
+leds7 = [led1,led2,led3]
+leds8 = [led10,led9,led8]
 
 def secuencia1():
   for i in leds:
@@ -167,7 +169,20 @@ def secuencia9():
         sleep(0.5)
         i.value(3)
         sleep(0.05)
-        i.value(1)      
+        i.value(1)
+def secuencia10():
+    for i in leds7:
+        i.value(1)
+        sleep(0.5)
+        i.value(3)
+        sleep(0.05)
+        i.value(1)
+        for i in leds8:
+            i.value(1)
+            sleep(0.5)
+            i.value(3)
+            sleep(0.05)
+            i.value(1)    
 while True:
     if pulsador.value():
         secuencia1()
@@ -183,9 +198,11 @@ while True:
         secuencia6()
     if (pulsador.value() and pulsador2.value()):
         secuencia7()
-    if (pulsador3.value() and pulsador2.value()): 
+    if (not pulsador3.value() and pulsador2.value()): 
         secuencia8()
     if not pulsador4.value():
         secuencia9()
-    
+    if (not pulsador4.value() and not pulsador3.value()): 
+        secuencia10()  
+        
     
